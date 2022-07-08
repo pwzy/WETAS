@@ -13,6 +13,10 @@ from timeseries import TimeSeriesWithAnomalies
 from softdtw_cuda import SoftDTW
 from utils import * 
 
+import ipdb
+import warnings
+warnings.simplefilter('ignore')
+
 def evaluation(args, model, data_loader, bce, epoch, train_loader=None):
     model.eval()
     total, total_loss, total_bce_loss, total_dtw_loss = 0, 0, 0, 0
@@ -122,6 +126,8 @@ def train_bceloss(args, train_dataset, valid_dataset, test_dataset):
         for itr, batch in enumerate(train_loader):
             data = batch['data'].cuda()
             wlabel = batch['wlabel'].cuda()
+
+            ipdb.set_trace()
 
             out = model.get_scores(data)
             bce_loss = bce(out['wscore'], wlabel)

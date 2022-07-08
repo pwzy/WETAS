@@ -28,6 +28,7 @@ from numba import jit
 from torch.autograd import Function
 from numba import cuda
 import math
+import ipdb
 
 # ----------------------------------------------------------------------------------------------------------------------
 @cuda.jit
@@ -412,6 +413,7 @@ class SoftDTW(torch.nn.Module):
         """
         bx, dx, lx = x.shape
         by, dy, ly = y.shape
+        ipdb.set_trace()
         # Make sure the dimensions match
         assert bx == by  # Equal batch sizes
         assert dx == dy  # Equal feature dimensions
@@ -443,8 +445,8 @@ class SoftDTW(torch.nn.Module):
     def forward(self, X, Y):
         """
         Compute the soft-DTW value between X and Y
-        :param X: One batch of examples, batch_size x seq_len x dims
-        :param Y: The other batch of examples, batch_size x seq_len x dims
+        :param X: One batch of examples, batch_size x seq_len x dims           torch.Size([32, 1, 6])  
+        :param Y: The other batch of examples, batch_size x seq_len x dims     torch.Size([32, 1, 500]) 
         :return: The computed results
         """
 

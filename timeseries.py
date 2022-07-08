@@ -65,3 +65,17 @@ class TimeSeriesWithAnomalies(Dataset):
             'wlabel': self.wlabel[idx]
         } 
 
+if __name__ == "__main__":
+    # /hidden_size=128, output_size=128, kernel_size=2, n_layers=7, dropout=0.5, pooling_type='avg', local_threshold=0.3, granularity=4, beta=0.1, gamma=0.1, batch_size=32, n_epochs=200, learning_rate=0.0001, gpuidx=0, patience=50, stopping='f1', seed=0, dataset='EMG', split_size=500, data_dir='./data/EMG'
+    data = TimeSeriesWithAnomalies(data_dir='./data/EMG', split_size=500, split='train')
+    print(data.input_size)
+    # for i in range(100):
+        # out = data.__getitem__(i)
+        # print(out['wlabel'])
+        # print(out)
+
+    # out = data.__getitem__(2)
+    # print(out['wlabel'])
+    # print(out)
+
+
